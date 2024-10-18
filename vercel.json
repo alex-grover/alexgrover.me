@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    { "source": "/links", "destination": "/", "permanent": true },
+    { "source": "/writing", "destination": "/", "permanent": false },
+    {
+      "source": "/writing/python-hexagonal-architecture",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
