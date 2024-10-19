@@ -1,0 +1,18 @@
+{
+  "name": "alexgrover.me",
+  "private": true,
+  "description": "My personal website.",
+  "author": "Alex Grover <hello@alexgrover.me> (https://alexgrover.me)",
+  "homepage": "https://alexgrover.me",
+  "repository": "github:alex-grover/alexgrover.me",
+  "license": "ISC",
+  "main": "index.html",
+  "scripts": {
+    "check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "lefthook": "^1.7.22",
+    "prettier": "3.3.3"
+  }
+}
