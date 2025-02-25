@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex Grover</title>
+    <meta name="description" content="Full stack product engineer." />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a[href^="mailto:"] {
+        text-decoration: underline;
+        color: var(--color-text);
+      }
+
+      :root {
+        --color-border: light-dark(oklch(93% 0 0), oklch(25% 0 0));
+        --color-text: light-dark(oklch(0 0 0), oklch(100% 0 0));
+      }
+
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-family: system-ui, sans-serif;
+        -webkit-text-size-adjust: 100%;
+        color-scheme: light dark;
+        background-color: light-dark(oklch(100% 0 0), oklch(14% 0 0));
+        color: var(--color-text);
+      }
+
+      #container {
+        min-height: 100vh;
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 5rem 1rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      h1 {
+        font-size: unset;
+        font-weight: 500;
+      }
+
+      .tertiary {
+        color: light-dark(oklch(45% 0 0), oklch(55% 0 0));
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .secondary {
+        color: light-dark(oklch(45% 0 0), oklch(70% 0 0));
+      }
+
+      h2 {
+        font-size: 1.125rem;
+        font-weight: 500;
+      }
+
+      #cards {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .card {
+        border: 1px solid var(--color-border);
+        border-radius: 1rem;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      #pills {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .pill {
+        padding: 0.25rem 0.625rem;
+        background-color: light-dark(oklch(97% 0 0), oklch(25% 0 0));
+        font-size: 0.875rem;
+        border-radius: 9999px;
+      }
+
+      footer {
+        border-top: 1px solid var(--color-border);
+        padding: 1.25rem 0;
+        font-size: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <hgroup>
+        <h1>Alex Grover</h1>
+        <p class="tertiary">Product Engineer</p>
+      </hgroup>
+
+      <main>
+        <section>
+          <p class="secondary">
+            Full stack engineer focused on building engaging software
+            experiences.
+          </p>
+        </section>
+
+        <section>
+          <h2>Work Experience</h2>
+          <div id="cards">
+            <a href="https://www.yoyo.meme" target="_blank" class="card">
+              <div>
+                <div>CTO</div>
+                <div class="secondary">Yoyo</div>
+              </div>
+              <div class="secondary">2023-Present</div>
+            </a>
+            <a href="https://www.darwinhomes.com" target="_blank" class="card">
+              <div>
+                <div>Engineering Manager</div>
+                <div class="secondary">Darwin Homes</div>
+              </div>
+              <div class="secondary">2020-2023</div>
+            </a>
+            <div class="card">
+              <div>
+                <div>Software Engineer</div>
+                <div class="secondary">Freelance</div>
+              </div>
+              <div class="secondary">2018-2020</div>
+            </div>
+            <a href="https://www.airbnb.com" target="_blank" class="card">
+              <div>
+                <div>Software Engineer</div>
+                <div class="secondary">Airbnb</div>
+              </div>
+              <div class="secondary">2017-2018</div>
+            </a>
+            <a href="https://www.doordash.com" target="_blank" class="card">
+              <div>
+                <div>Software Engineer</div>
+                <div class="secondary">DoorDash</div>
+              </div>
+              <div class="secondary">2015-2017</div>
+            </a>
+          </div>
+        </section>
+
+        <section>
+          <h2>Connect</h2>
+          <p class="secondary">
+            Feel free to contact me at
+            <a href="mailto:hello@alexgrover.me" class="primary"
+              >hello@alexgrover.me</a
+            >
+          </p>
+          <div id="pills">
+            <a
+              href="https://github.com/alex-grover"
+              target="_blank"
+              class="pill"
+              >GitHub &#x2197;</a
+            >
+            <a
+              href="https://warpcast.com/alexgrover.eth"
+              target="_blank"
+              class="pill"
+              >Farcaster &#x2197;</a
+            >
+            <a
+              href="https://www.instagram.com/alex__grover/"
+              target="_blank"
+              class="pill"
+              >Instagram &#x2197;</a
+            >
+          </div>
+        </section>
+
+        <footer class="tertiary">&copy; Alex Grover</footer>
+      </main>
+    </div>
+  </body>
+</html>
