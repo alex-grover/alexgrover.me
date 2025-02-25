@@ -1,5 +1,12 @@
 {
   "name": "alexgrover.me",
   "description": "My personal website.",
-  "private": true
+  "private": true,
+  "scripts": {
+    "check:format": "prettier . --check",
+    "fix:format": "prettier . --write"
+  },
+  "devDependencies": {
+    "prettier": "3.5.2"
+  }
 }
