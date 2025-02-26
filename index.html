@@ -66,6 +66,14 @@
         color: var(--color-text);
       }
 
+      body:has(input[name="theme"][value="light"]:checked) {
+        color-scheme: light;
+      }
+
+      body:has(input[name="theme"][value="dark"]:checked) {
+        color-scheme: dark;
+      }
+
       #container {
         min-height: 100vh;
         max-width: 40rem;
@@ -172,7 +180,37 @@
         border-top: 1px solid var(--color-border);
         padding: 1.25rem 0;
         font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         animation: fadeIn 500ms calc(var(--animation-delay) * 4) backwards;
+      }
+
+      .inputs {
+        display: flex;
+        gap: 0.25rem;
+      }
+
+      input {
+        display: none;
+      }
+
+      label {
+        padding: 0.25rem 0.375rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      input:checked + label {
+        background-color: var(--color-background-secondary);
+        border-radius: 0.25rem;
+        transition: background-color 200ms;
       }
     </style>
   </head>
@@ -262,7 +300,80 @@
           </div>
         </section>
 
-        <footer class="tertiary">&copy; Alex Grover</footer>
+        <footer>
+          <div class="tertiary">&copy; Alex Grover</div>
+          <div class="inputs">
+            <input type="radio" name="theme" id="light" value="light" />
+            <label for="light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+            </label>
+            <input type="radio" name="theme" id="dark" value="dark" />
+            <label for="dark">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </label>
+            <input
+              type="radio"
+              name="theme"
+              id="system"
+              value="system"
+              checked
+            />
+            <label for="system">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 17v4" />
+                <path d="m15.2 4.9-.9-.4" />
+                <path d="m15.2 7.1-.9.4" />
+                <path d="m16.9 3.2-.4-.9" />
+                <path d="m16.9 8.8-.4.9" />
+                <path d="m19.5 2.3-.4.9" />
+                <path d="m19.5 9.7-.4-.9" />
+                <path d="m21.7 4.5-.9.4" />
+                <path d="m21.7 7.5-.9-.4" />
+                <path
+                  d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"
+                />
+                <path d="M8 21h8" />
+                <circle cx="18" cy="6" r="3" />
+              </svg>
+            </label>
+          </div>
+        </footer>
       </main>
     </div>
   </body>
