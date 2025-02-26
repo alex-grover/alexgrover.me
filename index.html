@@ -24,6 +24,26 @@
         color: var(--color-text);
       }
 
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes enterUp {
+        from {
+          transform: translateY(24px);
+        }
+
+        to {
+          transform: none;
+        }
+      }
+
       :root {
         --color-background-secondary: light-dark(
           oklch(97% 0 0),
@@ -31,6 +51,8 @@
         );
         --color-border: light-dark(oklch(93% 0 0), oklch(25% 0 0));
         --color-text: light-dark(oklch(0 0 0), oklch(100% 0 0));
+        --animation: fadeIn 500ms backwards, enterUp 500ms backwards;
+        --animation-delay: 100ms;
       }
 
       body {
@@ -54,6 +76,10 @@
         gap: 2rem;
       }
 
+      hgroup {
+        animation: var(--animation);
+      }
+
       h1 {
         font-size: unset;
         font-weight: 500;
@@ -73,6 +99,16 @@
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
+        animation: var(--animation);
+        animation-delay: var(--animation-delay);
+      }
+
+      section:nth-child(2) {
+        animation-delay: calc(var(--animation-delay) * 2);
+      }
+
+      section:nth-child(3) {
+        animation-delay: calc(var(--animation-delay) * 3);
       }
 
       .secondary {
@@ -136,6 +172,7 @@
         border-top: 1px solid var(--color-border);
         padding: 1.25rem 0;
         font-size: 0.75rem;
+        animation: fadeIn 500ms calc(var(--animation-delay) * 4) backwards;
       }
     </style>
   </head>
