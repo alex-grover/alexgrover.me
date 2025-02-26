@@ -25,6 +25,10 @@
       }
 
       :root {
+        --color-background-secondary: light-dark(
+          oklch(97% 0 0),
+          oklch(25% 0 0)
+        );
         --color-border: light-dark(oklch(93% 0 0), oklch(25% 0 0));
         --color-text: light-dark(oklch(0 0 0), oklch(100% 0 0));
       }
@@ -92,6 +96,13 @@
         padding: 1rem;
         display: flex;
         justify-content: space-between;
+        transition: background-color 200ms;
+      }
+
+      @media (hover: hover) {
+        .card:hover {
+          background-color: var(--color-background-secondary);
+        }
       }
 
       #pills {
@@ -101,9 +112,24 @@
 
       .pill {
         padding: 0.25rem 0.625rem;
-        background-color: light-dark(oklch(97% 0 0), oklch(25% 0 0));
+        background-color: var(--color-background-secondary);
         font-size: 0.875rem;
         border-radius: 9999px;
+        transition:
+          background-color 200ms,
+          transform 200ms;
+      }
+
+      @media (hover: hover) {
+        .pill:hover {
+          background-color: light-dark(oklch(92% 0 0), oklch(35% 0 0));
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+          .pill:hover {
+            transform: perspective(1px) scale(1.05);
+          }
+        }
       }
 
       footer {
