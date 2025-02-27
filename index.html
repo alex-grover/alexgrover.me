@@ -17,11 +17,11 @@
       a {
         text-decoration: none;
         color: inherit;
-      }
 
-      a[href^="mailto:"] {
-        text-decoration: underline;
-        color: var(--color-text);
+        &[href^="mailto:"] {
+          text-decoration: underline;
+          color: var(--color-text);
+        }
       }
 
       @keyframes fadeIn {
@@ -64,14 +64,14 @@
         color-scheme: light dark;
         background-color: light-dark(oklch(100% 0 0), oklch(14% 0 0));
         color: var(--color-text);
-      }
 
-      body:has(input[name="theme"][value="light"]:checked) {
-        color-scheme: light;
-      }
+        &:has(input[name="theme"][value="light"]:checked) {
+          color-scheme: light;
+        }
 
-      body:has(input[name="theme"][value="dark"]:checked) {
-        color-scheme: dark;
+        &:has(input[name="theme"][value="dark"]:checked) {
+          color-scheme: dark;
+        }
       }
 
       #container {
@@ -109,14 +109,14 @@
         gap: 1.25rem;
         animation: var(--animation);
         animation-delay: var(--animation-delay);
-      }
 
-      section:nth-child(2) {
-        animation-delay: calc(var(--animation-delay) * 2);
-      }
+        &:nth-child(2) {
+          animation-delay: calc(var(--animation-delay) * 2);
+        }
 
-      section:nth-child(3) {
-        animation-delay: calc(var(--animation-delay) * 3);
+        &:nth-child(3) {
+          animation-delay: calc(var(--animation-delay) * 3);
+        }
       }
 
       .secondary {
@@ -132,46 +132,46 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-      }
 
-      .card {
-        border: 1px solid var(--color-border);
-        border-radius: 1rem;
-        padding: 1rem;
-        display: flex;
-        justify-content: space-between;
-        transition: background-color 200ms;
-      }
+        & > * {
+          border: 1px solid var(--color-border);
+          border-radius: 1rem;
+          padding: 1rem;
+          display: flex;
+          justify-content: space-between;
+          transition: background-color 200ms;
 
-      @media (hover: hover) {
-        .card:hover {
-          background-color: var(--color-background-secondary);
+          @media (hover: hover) {
+            &:hover {
+              background-color: var(--color-background-secondary);
+            }
+          }
         }
       }
 
       #pills {
         display: flex;
         gap: 0.75rem;
-      }
 
-      .pill {
-        padding: 0.25rem 0.625rem;
-        background-color: var(--color-background-secondary);
-        font-size: 0.875rem;
-        border-radius: 9999px;
-        transition:
-          background-color 200ms,
-          transform 200ms;
-      }
+        & > * {
+          padding: 0.25rem 0.625rem;
+          background-color: var(--color-background-secondary);
+          font-size: 0.875rem;
+          border-radius: 9999px;
+          transition:
+            background-color 200ms,
+            transform 200ms;
 
-      @media (hover: hover) {
-        .pill:hover {
-          background-color: light-dark(oklch(92% 0 0), oklch(35% 0 0));
-        }
+          @media (hover: hover) {
+            &:hover {
+              background-color: light-dark(oklch(92% 0 0), oklch(35% 0 0));
+            }
 
-        @media (prefers-reduced-motion: no-preference) {
-          .pill:hover {
-            transform: perspective(1px) scale(1.05);
+            @media (prefers-reduced-motion: no-preference) {
+              &:hover {
+                transform: perspective(1px) scale(1.05);
+              }
+            }
           }
         }
       }
@@ -191,29 +191,30 @@
         gap: 0.25rem;
       }
 
-      input {
-        display: none;
-      }
-
       label {
         padding: 0.25rem 0.375rem;
         cursor: pointer;
         display: flex;
         align-items: center;
+
+        &:has(input:checked) {
+          background-color: var(--color-background-secondary);
+          border-radius: 0.25rem;
+          transition: background-color 200ms;
+        }
+      }
+
+      input {
+        display: none;
       }
 
       svg {
         width: 1rem;
         height: 1rem;
       }
-
-      input:checked + label {
-        background-color: var(--color-background-secondary);
-        border-radius: 0.25rem;
-        transition: background-color 200ms;
-      }
     </style>
   </head>
+
   <body>
     <div id="container">
       <hgroup>
@@ -232,35 +233,35 @@
         <section>
           <h2>Work Experience</h2>
           <div id="cards">
-            <a href="https://www.yoyo.meme" target="_blank" class="card">
+            <a href="https://www.yoyo.meme" target="_blank">
               <div>
                 <div>CTO</div>
                 <div class="secondary">Yoyo</div>
               </div>
               <div class="secondary">2023-Present</div>
             </a>
-            <a href="https://www.darwinhomes.com" target="_blank" class="card">
+            <a href="https://www.darwinhomes.com" target="_blank">
               <div>
                 <div>Engineering Manager</div>
                 <div class="secondary">Darwin Homes</div>
               </div>
               <div class="secondary">2020-2023</div>
             </a>
-            <div class="card">
+            <div>
               <div>
                 <div>Software Engineer</div>
                 <div class="secondary">Freelance</div>
               </div>
               <div class="secondary">2018-2020</div>
             </div>
-            <a href="https://www.airbnb.com" target="_blank" class="card">
+            <a href="https://www.airbnb.com" target="_blank">
               <div>
                 <div>Software Engineer</div>
                 <div class="secondary">Airbnb</div>
               </div>
               <div class="secondary">2017-2018</div>
             </a>
-            <a href="https://www.doordash.com" target="_blank" class="card">
+            <a href="https://www.doordash.com" target="_blank">
               <div>
                 <div>Software Engineer</div>
                 <div class="secondary">DoorDash</div>
@@ -279,22 +280,13 @@
             >
           </p>
           <div id="pills">
-            <a
-              href="https://github.com/alex-grover"
-              target="_blank"
-              class="pill"
+            <a href="https://github.com/alex-grover" target="_blank"
               >GitHub &#x2197;</a
             >
-            <a
-              href="https://warpcast.com/alexgrover.eth"
-              target="_blank"
-              class="pill"
+            <a href="https://warpcast.com/alexgrover.eth" target="_blank"
               >Farcaster &#x2197;</a
             >
-            <a
-              href="https://www.instagram.com/alex__grover/"
-              target="_blank"
-              class="pill"
+            <a href="https://www.instagram.com/alex__grover/" target="_blank"
               >Instagram &#x2197;</a
             >
           </div>
@@ -303,8 +295,7 @@
         <footer>
           <div class="tertiary">&copy; Alex Grover</div>
           <div class="inputs">
-            <input type="radio" name="theme" id="light" value="light" />
-            <label for="light">
+            <label>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -324,9 +315,9 @@
                 <path d="m6.34 17.66-1.41 1.41" />
                 <path d="m19.07 4.93-1.41 1.41" />
               </svg>
+              <input type="radio" name="theme" value="light" />
             </label>
-            <input type="radio" name="theme" id="dark" value="dark" />
-            <label for="dark">
+            <label>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -338,15 +329,9 @@
               >
                 <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
               </svg>
+              <input type="radio" name="theme" value="dark" />
             </label>
-            <input
-              type="radio"
-              name="theme"
-              id="system"
-              value="system"
-              checked
-            />
-            <label for="system">
+            <label>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -371,6 +356,7 @@
                 <path d="M8 21h8" />
                 <circle cx="18" cy="6" r="3" />
               </svg>
+              <input type="radio" name="theme" value="system" checked />
             </label>
           </div>
         </footer>
