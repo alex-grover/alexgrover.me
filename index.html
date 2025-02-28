@@ -108,8 +108,10 @@
         gap: 2rem;
       }
 
-      hgroup {
-        animation: var(--animation);
+      @media (prefers-reduced-motion: no-preference) {
+        hgroup {
+          animation: var(--animation);
+        }
       }
 
       h1 {
@@ -131,8 +133,13 @@
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
-        animation: var(--animation);
-        animation-delay: var(--animation-delay);
+
+        @media (prefers-reduced-motion: no-preference) {
+          & {
+            animation: var(--animation);
+            animation-delay: var(--animation-delay);
+          }
+        }
 
         &:nth-child(2) {
           animation-delay: calc(var(--animation-delay) * 2);
@@ -207,7 +214,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        animation: fadeIn 500ms calc(var(--animation-delay) * 4) backwards;
+
+        @media (prefers-reduced-motion: no-preference) {
+          & {
+            animation: fadeIn 500ms calc(var(--animation-delay) * 4) backwards;
+          }
+        }
       }
 
       .inputs {
