@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "framework": null,
+  "redirects": [
+    { "source": "/links", "destination": "/", "permanent": true },
+    { "source": "/writing", "destination": "/", "permanent": false },
+    {
+      "source": "/writing/python-hexagonal-architecture",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "trailingSlash": false
+}
