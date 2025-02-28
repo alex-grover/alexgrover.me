@@ -6,6 +6,29 @@
     <meta name="description" content="Full stack product engineer." />
     <script defer src="/_vercel/insights/script.js"></script>
 
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      const theme = ["light", "dark", "system"].includes(savedTheme)
+        ? savedTheme
+        : "system";
+      if (theme !== "system")
+        document.documentElement.style.colorScheme = theme;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("input").forEach((input) => {
+          input.attributes.value.value === theme
+            ? input.setAttribute("checked", "")
+            : input.removeAttribute("checked");
+
+          input.addEventListener("click", (event) => {
+            document.documentElement.style.colorScheme =
+              event.target.value === "system" ? "" : event.target.value;
+            localStorage.setItem("theme", event.target.value);
+          });
+        });
+      });
+    </script>
+
     <style>
       *,
       *::before,
@@ -53,17 +76,8 @@
         --color-text: light-dark(oklch(0 0 0), oklch(100% 0 0));
         --animation: fadeIn 500ms backwards, enterUp 500ms backwards;
         --animation-delay: 100ms;
-      }
 
-      body {
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        font-family: system-ui, sans-serif;
-        -webkit-text-size-adjust: 100%;
         color-scheme: light dark;
-        background-color: light-dark(oklch(100% 0 0), oklch(14% 0 0));
-        color: var(--color-text);
 
         &:has(input[name="theme"][value="light"]:checked) {
           color-scheme: light;
@@ -72,6 +86,16 @@
         &:has(input[name="theme"][value="dark"]:checked) {
           color-scheme: dark;
         }
+      }
+
+      body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-family: system-ui, sans-serif;
+        -webkit-text-size-adjust: 100%;
+        background-color: light-dark(oklch(100% 0 0), oklch(14% 0 0));
+        color: var(--color-text);
       }
 
       #container {
