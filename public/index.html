@@ -30,12 +30,24 @@
         "font-style:italic",
       );
 
-      const savedTheme = localStorage.getItem("theme");
-      const theme = ["light", "dark", "system"].includes(savedTheme)
-        ? savedTheme
-        : "system";
-      if (theme !== "system")
-        document.documentElement.style.colorScheme = theme;
+      function updateTheme(newTheme, persist = true) {
+        const theme = ["light", "dark", "system"].includes(newTheme)
+          ? newTheme
+          : "system";
+        document.documentElement.style.colorScheme =
+          theme !== "system" ? theme : "";
+        document.querySelectorAll("input").forEach((input) => {
+          input.attributes.value.value === theme
+            ? input.setAttribute("checked", "")
+            : input.removeAttribute("checked");
+        });
+        if (persist) localStorage.setItem(storageKey, theme);
+        return theme;
+      }
+
+      const storageKey = "theme";
+      const savedTheme = localStorage.getItem(storageKey);
+      const theme = updateTheme(savedTheme, false);
 
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("input").forEach((input) => {
@@ -44,11 +56,13 @@
             : input.removeAttribute("checked");
 
           input.addEventListener("click", (event) => {
-            document.documentElement.style.colorScheme =
-              event.target.value === "system" ? "" : event.target.value;
-            localStorage.setItem("theme", event.target.value);
+            updateTheme(event.target.value);
           });
         });
+      });
+
+      window.addEventListener("storage", (event) => {
+        if (event.key === storageKey) updateTheme(event.newValue);
       });
     </script>
 
