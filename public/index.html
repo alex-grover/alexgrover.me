@@ -30,19 +30,17 @@
         'font-style:italic',
       )
 
-      function updateTheme(newTheme, persist = true) {
-        const theme = ['light', 'dark', 'system'].includes(newTheme)
-          ? newTheme
+      function updateTheme(to, persist = true) {
+        const newTheme = ['light', 'dark', 'system'].includes(to)
+          ? to
           : 'system'
         document.documentElement.style.colorScheme =
-          theme !== 'system' ? theme : ''
+          newTheme !== 'system' ? newTheme : ''
         document.querySelectorAll('input').forEach((input) => {
-          input.attributes.value.value === theme
-            ? input.setAttribute('checked', '')
-            : input.removeAttribute('checked')
+          input.checked = input.attributes.value.value === newTheme
         })
-        if (persist) localStorage.setItem(storageKey, theme)
-        return theme
+        if (persist) localStorage.setItem(storageKey, newTheme)
+        return newTheme
       }
 
       const storageKey = 'theme'
@@ -51,10 +49,7 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('input').forEach((input) => {
-          input.attributes.value.value === theme
-            ? input.setAttribute('checked', '')
-            : input.removeAttribute('checked')
-
+          input.checked = input.attributes.value.value === theme
           input.addEventListener('click', (event) => {
             updateTheme(event.target.value)
           })
