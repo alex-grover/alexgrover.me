@@ -26,44 +26,44 @@
 
     <script>
       console.log(
-        "%cThis website was handcrafted with love in one file using plain HTML, CSS, and JS. View source: https://github.com/alex-grover/alexgrover.me",
-        "font-style:italic",
-      );
+        '%cThis website was handcrafted with love in one file using plain HTML, CSS, and JS. View source: https://github.com/alex-grover/alexgrover.me',
+        'font-style:italic',
+      )
 
       function updateTheme(newTheme, persist = true) {
-        const theme = ["light", "dark", "system"].includes(newTheme)
+        const theme = ['light', 'dark', 'system'].includes(newTheme)
           ? newTheme
-          : "system";
+          : 'system'
         document.documentElement.style.colorScheme =
-          theme !== "system" ? theme : "";
-        document.querySelectorAll("input").forEach((input) => {
+          theme !== 'system' ? theme : ''
+        document.querySelectorAll('input').forEach((input) => {
           input.attributes.value.value === theme
-            ? input.setAttribute("checked", "")
-            : input.removeAttribute("checked");
-        });
-        if (persist) localStorage.setItem(storageKey, theme);
-        return theme;
+            ? input.setAttribute('checked', '')
+            : input.removeAttribute('checked')
+        })
+        if (persist) localStorage.setItem(storageKey, theme)
+        return theme
       }
 
-      const storageKey = "theme";
-      const savedTheme = localStorage.getItem(storageKey);
-      const theme = updateTheme(savedTheme, false);
+      const storageKey = 'theme'
+      const savedTheme = localStorage.getItem(storageKey)
+      const theme = updateTheme(savedTheme, false)
 
-      document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll("input").forEach((input) => {
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('input').forEach((input) => {
           input.attributes.value.value === theme
-            ? input.setAttribute("checked", "")
-            : input.removeAttribute("checked");
+            ? input.setAttribute('checked', '')
+            : input.removeAttribute('checked')
 
-          input.addEventListener("click", (event) => {
-            updateTheme(event.target.value);
-          });
-        });
-      });
+          input.addEventListener('click', (event) => {
+            updateTheme(event.target.value)
+          })
+        })
+      })
 
-      window.addEventListener("storage", (event) => {
-        if (event.key === storageKey) updateTheme(event.newValue);
-      });
+      window.addEventListener('storage', (event) => {
+        if (event.key === storageKey) updateTheme(event.newValue)
+      })
     </script>
 
     <style>
@@ -78,7 +78,7 @@
         text-decoration: none;
         color: inherit;
 
-        &[href^="mailto:"] {
+        &[href^='mailto:'] {
           text-decoration: underline;
           color: var(--color-text);
         }
@@ -122,11 +122,11 @@
 
         color-scheme: light dark;
 
-        &:has(input[name="theme"][value="light"]:checked) {
+        &:has(input[name='theme'][value='light']:checked) {
           color-scheme: light;
         }
 
-        &:has(input[name="theme"][value="dark"]:checked) {
+        &:has(input[name='theme'][value='dark']:checked) {
           color-scheme: dark;
         }
       }
