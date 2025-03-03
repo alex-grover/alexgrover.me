@@ -208,6 +208,7 @@
 
         & a {
           font-weight: 500;
+          display: flex;
         }
 
         @media (min-width: 900px) {
@@ -345,20 +346,28 @@
           <h2>Selected Projects</h2>
           <div id="projects">
             <div>
-              <video src="/rgb.mov" autoplay loop muted playsinline></video>
+              <a href="https://rgb.fun" target="_blank">
+                <video src="/rgb.mov" autoplay loop muted playsinline></video>
+              </a>
               <a href="https://rgb.fun" target="_blank">rgb.fun</a>
               <p class="secondary">16,777,216 onchain rgb values</p>
             </div>
             <div>
-              <img
-                src="/astro.png"
-                alt="Screenshot of astro-themes GitHub repository"
-              />
               <a
                 href="https://github.com/alex-grover/astro-themes"
                 target="_blank"
-                >Astro Themes</a
               >
+                <img
+                  src="/astro.png"
+                  alt="Screenshot of astro-themes GitHub repository"
+                />
+              </a>
+              <a
+                href="https://github.com/alex-grover/astro-themes"
+                target="_blank"
+              >
+                Astro Themes
+              </a>
               <p class="secondary">Easy dark mode for Astro websites</p>
             </div>
           </div>
