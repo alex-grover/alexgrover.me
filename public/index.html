@@ -200,13 +200,14 @@
         display: grid;
         gap: 2rem 1rem;
 
-        & > * {
+        & > *,
+        & > * > a {
           display: flex;
           flex-direction: column;
           gap: 0.25rem;
         }
 
-        & a {
+        & a p {
           font-weight: 500;
           display: flex;
         }
@@ -349,8 +350,8 @@
             <div>
               <a href="https://rgb.fun" target="_blank">
                 <video src="/rgb.mp4" autoplay loop muted playsinline></video>
+                <p>rgb.fun</p>
               </a>
-              <a href="https://rgb.fun" target="_blank">rgb.fun</a>
               <p class="secondary">16,777,216 onchain rgb values</p>
             </div>
             <div>
@@ -362,12 +363,12 @@
                   src="/astro.avif"
                   alt="Screenshot of astro-themes GitHub repository"
                 />
-              </a>
-              <a
-                href="https://github.com/alex-grover/astro-themes"
-                target="_blank"
-              >
-                astro-themes
+                <p
+                  href="https://github.com/alex-grover/astro-themes"
+                  target="_blank"
+                >
+                  astro-themes
+                </p>
               </a>
               <p class="secondary">Easy dark mode for Astro websites</p>
             </div>
