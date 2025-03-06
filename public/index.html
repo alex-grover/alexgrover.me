@@ -320,12 +320,14 @@
         align-items: center;
         border-radius: 0.25rem;
 
-        &:hover {
-          background-color: var(--color-background-tertiary);
-        }
-
         &:has(input:checked) {
           background-color: var(--color-background-secondary);
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--color-background-tertiary);
+          }
         }
       }
 
