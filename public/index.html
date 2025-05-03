@@ -34,6 +34,10 @@
 
       function updateColorScheme(input) {
         localStorage.setItem(storageKey, input.value)
+        document.body.classList.add('disable-transitions')
+        requestAnimationFrame(() => {
+          document.body.classList.remove('disable-transitions')
+        })
       }
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -45,8 +49,12 @@
 
       window.addEventListener('storage', (event) => {
         if (event.key !== storageKey) return
+        document.body.classList.add('disable-transitions')
         document.querySelectorAll('input').forEach((input) => {
           input.checked = input.attributes.value.value === event.newValue
+        })
+        requestAnimationFrame(() => {
+          document.body.classList.remove('disable-transitions')
         })
       })
     </script>
@@ -93,6 +101,10 @@
         to {
           transform: none;
         }
+      }
+
+      .disable-transitions * {
+        transition: none !important;
       }
 
       :root {
