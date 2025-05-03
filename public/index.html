@@ -30,34 +30,24 @@
         'font-style:italic',
       )
 
-      function updateTheme(to, persist = true) {
-        const newTheme = ['light', 'dark', 'system'].includes(to)
-          ? to
-          : 'system'
-        document.documentElement.style.colorScheme =
-          newTheme !== 'system' ? newTheme : ''
-        document.querySelectorAll('input').forEach((input) => {
-          input.checked = input.attributes.value.value === newTheme
-        })
-        if (persist) localStorage.setItem(storageKey, newTheme)
-        return newTheme
-      }
+      const storageKey = 'color-scheme'
 
-      const storageKey = 'theme'
-      const savedTheme = localStorage.getItem(storageKey)
-      const theme = updateTheme(savedTheme, false)
+      function updateColorScheme(input) {
+        localStorage.setItem(storageKey, input.value)
+      }
 
       document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('input').forEach((input) => {
-          input.checked = input.attributes.value.value === theme
-          input.addEventListener('click', (event) => {
-            updateTheme(event.target.value)
-          })
+          const colorScheme = localStorage.getItem(storageKey) ?? 'light dark'
+          input.checked = input.attributes.value.value === colorScheme
         })
       })
 
       window.addEventListener('storage', (event) => {
-        if (event.key === storageKey) updateTheme(event.newValue)
+        if (event.key !== storageKey) return
+        document.querySelectorAll('input').forEach((input) => {
+          input.checked = input.attributes.value.value === event.newValue
+        })
       })
     </script>
 
@@ -473,7 +463,12 @@
                 <path d="m6.34 17.66-1.41 1.41" />
                 <path d="m19.07 4.93-1.41 1.41" />
               </svg>
-              <input type="radio" name="theme" value="light" />
+              <input
+                type="radio"
+                name="theme"
+                value="light"
+                onclick="updateColorScheme(this)"
+              />
             </label>
             <label>
               <svg
@@ -487,7 +482,12 @@
               >
                 <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
               </svg>
-              <input type="radio" name="theme" value="dark" />
+              <input
+                type="radio"
+                name="theme"
+                value="dark"
+                onclick="updateColorScheme(this)"
+              />
             </label>
             <label>
               <svg
@@ -514,7 +514,13 @@
                 <path d="M8 21h8" />
                 <circle cx="18" cy="6" r="3" />
               </svg>
-              <input type="radio" name="theme" value="system" checked />
+              <input
+                type="radio"
+                name="theme"
+                value="light dark"
+                checked
+                onclick="updateColorScheme(this)"
+              />
             </label>
           </div>
         </footer>
