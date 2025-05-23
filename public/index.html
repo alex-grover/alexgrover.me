@@ -35,6 +35,15 @@
       function updateColorScheme(input) {
         localStorage.setItem(storageKey, input.value)
         document.body.classList.add('disable-transitions')
+
+        document.querySelector('meta[name="theme-color"]')?.remove()
+        if (input.value !== 'light dark') {
+          const meta = document.createElement('meta')
+          meta.name = 'theme-color'
+          meta.content = input.value === 'light' ? 'white' : 'oklch(14% 0 0)'
+          document.head.appendChild(meta)
+        }
+
         requestAnimationFrame(() => {
           document.body.classList.remove('disable-transitions')
         })
