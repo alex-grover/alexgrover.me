@@ -41,8 +41,8 @@
       }
 
       document.addEventListener('DOMContentLoaded', () => {
+        const colorScheme = localStorage.getItem(storageKey) ?? 'light dark'
         document.querySelectorAll('input').forEach((input) => {
-          const colorScheme = localStorage.getItem(storageKey) ?? 'light dark'
           input.checked = input.attributes.value.value === colorScheme
         })
       })
