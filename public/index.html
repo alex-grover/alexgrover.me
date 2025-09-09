@@ -32,9 +32,21 @@
 
       const storageKey = 'color-scheme'
 
-      function updateThemeColorMeta(colorScheme) {
+      function getColorScheme(preference) {
+        return preference ?? localStorage.getItem(storageKey) ?? 'light dark'
+      }
+
+      function updateInputCheckedState(preference) {
+        const colorScheme = getColorScheme(preference)
+        document.querySelectorAll('input[name="theme"]').forEach((input) => {
+          input.checked = input.value === colorScheme
+        })
+      }
+
+      function updateThemeColorMeta(preference) {
         document.querySelector('meta[name="theme-color"]')?.remove()
 
+        const colorScheme = getColorScheme(preference)
         const resolvedColorScheme =
           colorScheme === 'light dark'
             ? window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -47,6 +59,8 @@
         meta.content =
           resolvedColorScheme === 'light' ? 'white' : 'oklch(14% 0 0)'
         document.head.appendChild(meta)
+
+        return resolvedColorScheme
       }
 
       function updateColorScheme(input) {
@@ -59,19 +73,14 @@
       }
 
       document.addEventListener('DOMContentLoaded', () => {
-        const colorScheme = localStorage.getItem(storageKey) ?? 'light dark'
-        document.querySelectorAll('input').forEach((input) => {
-          input.checked = input.attributes.value.value === colorScheme
-        })
-        updateThemeColorMeta(colorScheme)
+        updateInputCheckedState()
+        document.documentElement.style.colorScheme = ''
       })
 
       window.addEventListener('storage', (event) => {
         if (event.key !== storageKey) return
         document.body.classList.add('disable-transitions')
-        document.querySelectorAll('input').forEach((input) => {
-          input.checked = input.attributes.value.value === event.newValue
-        })
+        updateInputCheckedState(event.newValue)
         updateThemeColorMeta(event.newValue)
         requestAnimationFrame(() => {
           document.body.classList.remove('disable-transitions')
@@ -81,9 +90,11 @@
       window
         .matchMedia('(prefers-color-scheme: dark)')
         .addEventListener('change', (event) => {
-          const colorScheme = localStorage.getItem(storageKey) ?? 'light dark'
-          updateThemeColorMeta(colorScheme)
+          updateThemeColorMeta()
         })
+
+      const resolvedColorScheme = updateThemeColorMeta()
+      document.documentElement.style.colorScheme = resolvedColorScheme
     </script>
 
     <style>
