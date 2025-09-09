@@ -172,7 +172,7 @@
         color: var(--color-text);
       }
 
-      #container {
+      page-container {
         min-height: 100vh;
         max-width: 40rem;
         margin: 0 auto;
@@ -232,27 +232,27 @@
         color: light-dark(oklch(45% 0 0), oklch(70% 0 0));
       }
 
-      #projects {
+      project-grid {
         display: grid;
         gap: 2rem 1rem;
-
-        & > *,
-        & > * > a {
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-        }
-
-        & a p {
-          font-weight: 500;
-          display: flex;
-        }
 
         @media (min-width: 900px) {
           & {
             grid-template-columns: 1fr 1fr;
           }
         }
+      }
+
+      project-card,
+      project-card > a {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      project-card a p {
+        font-weight: 500;
+        display: flex;
       }
 
       img,
@@ -269,7 +269,7 @@
         font-weight: 500;
       }
 
-      #cards {
+      job-list {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -290,11 +290,11 @@
         }
       }
 
-      #pills {
+      social-links {
         display: flex;
         gap: 0.75rem;
 
-        & > * {
+        & > a {
           padding: 0.25rem 0.625rem;
           background-color: var(--color-background-secondary);
           font-size: 0.875rem;
@@ -338,7 +338,7 @@
         font-style: italic;
       }
 
-      .inputs {
+      theme-toggle {
         display: flex;
         gap: 0.25rem;
       }
@@ -374,7 +374,7 @@
   </head>
 
   <body>
-    <div id="container">
+    <page-container>
       <hgroup>
         <h1>Alex Grover</h1>
         <p class="tertiary">Product Engineer</p>
@@ -390,15 +390,15 @@
 
         <section>
           <h2>Selected Projects</h2>
-          <div id="projects">
-            <div>
+          <project-grid>
+            <project-card>
               <a href="https://rgb.fun" target="_blank">
                 <video src="/rgb.mp4" autoplay loop muted playsinline></video>
                 <p>rgb.fun</p>
               </a>
               <p class="secondary">16,777,216 onchain rgb values</p>
-            </div>
-            <div>
+            </project-card>
+            <project-card>
               <a
                 href="https://github.com/alex-grover/astro-themes"
                 target="_blank"
@@ -415,13 +415,13 @@
                 </p>
               </a>
               <p class="secondary">Easy dark mode for Astro websites</p>
-            </div>
-          </div>
+            </project-card>
+          </project-grid>
         </section>
 
         <section>
           <h2>Work Experience</h2>
-          <div id="cards">
+          <job-list>
             <a href="https://v0.dev" target="_blank">
               <div>
                 <div>Software Engineer, v0</div>
@@ -464,7 +464,7 @@
               </div>
               <div class="secondary">2015-2017</div>
             </a>
-          </div>
+          </job-list>
         </section>
 
         <section>
@@ -475,7 +475,7 @@
               hello@alexgrover.me
             </a>
           </p>
-          <div id="pills">
+          <social-links>
             <a href="https://github.com/alex-grover" target="_blank">
               GitHub &#x2197;
             </a>
@@ -488,13 +488,13 @@
             <a href="https://x.com/alexgrover_me" target="_blank">
               X &#x2197;
             </a>
-          </div>
+          </social-links>
         </section>
       </main>
 
       <footer>
         <div class="tertiary italic">Never stop creating.</div>
-        <div class="inputs">
+        <theme-toggle>
           <label>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -574,8 +574,8 @@
               onclick="updateColorScheme(this)"
             />
           </label>
-        </div>
+        </theme-toggle>
       </footer>
-    </div>
+    </page-container>
   </body>
 </html>
