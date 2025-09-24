@@ -374,7 +374,9 @@
       }
 
       input {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
       }
 
       svg {
@@ -505,7 +507,7 @@
 
       <footer>
         <div class="tertiary italic">Never stop creating.</div>
-        <theme-toggle>
+        <theme-toggle role="radiogroup">
           <label>
             <svg
               xmlns="http://www.w3.org/2000/svg"
